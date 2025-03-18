@@ -1,0 +1,43 @@
+
+
+
+
+
+
+
+
+🔹 asyncio.create_task()
+--------------------------
+✅ Best for running background tasks individually
+Starts coroutines immediately.
+Each task runs independently.
+Must await each task separately for results.
+Used when some tasks might not need awaiting.
+
+___________________________________________________________
+
+🔹 asyncio.gather():
+---------------------
+✅ Best for collecting multiple task results together
+Starts all tasks at the same time.
+Waits for all tasks to finish together.
+Returns results in a list.
+Shorter & more efficient than asyncio.create_task() for grouped tasks.
+
+
+___________________________________________________________
+
+
+
+Feature					asyncio.create_task()	asyncio.gather()
+When tasks should start immediately	✅ Yes			✅ Yes
+When tasks should run in parallel	✅ Yes			✅ Yes
+When some tasks might not need awaiting	✅ Yes			❌ No
+When you need task results in order	❌ No			✅ Yes
+When tasks should complete together	❌ No			✅ Yes
+More readable for multiple tasks	❌ No 			✅ Yes
+					Must await each 	 Returns all results together
+					separately
+
+Best for background tasks		✅ Yes			❌ No
+Best for data collection tasks		❌ No			✅ Yes
